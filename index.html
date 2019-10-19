@@ -33,7 +33,10 @@
                                 <hr>
                                 <h3>Supplies Needed:</h3>
                                 <tweet-component v-for="supply in supplies" :supply="supply" :key="supply.id"/></tweet-component> 
-                        </div>        
+                        </div>
+                        <div v-if="select" class="buttons">
+                            <button class="button is-success is-fullwidth">Donate</button>
+                        </div> 
                     </div>
                     <!-- end of section: call to actions -->
                 </div>

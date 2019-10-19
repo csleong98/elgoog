@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Vue.component('tweet-component', {
         template: `
     <div class="supply">
-      <div class="card">
+      <div class="card" @click="select">
         <article class="card-content">
         <div class="media">
         <div class="media-left">
@@ -58,13 +58,16 @@ document.addEventListener('DOMContentLoaded', function () {
               <img :src="supply.img" alt="Image">
             </figure>
           </div>
-          <div class="subtitle">
+          <div class="content">
             <p>
                 <strong>{{supply.name}}</strong>
             </p>
           </div>
         </div>
         </article>
+        <footer class="card-footer">
+            <a href="#" class="card-footer-item">Select</a>            
+        </footer>
       </div>
     </div> 
   `,
