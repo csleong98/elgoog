@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./vue-google-maps.js"></script>
     <title>Maps</title>
 </head>
+
 <body>
-    
+    <div id="root">
+        {{ message }}
+
+        <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
+            <ground-overlay source="./overlay.png" :bounds="{
+                  north: 1.502,
+                  south: 1.185,
+                  east: 104.0262,
+                  west: 103.5998,
+              }" :opacity="0.5">
+            </ground-overlay>
+        </google-map>
+    </div>
+    <script src="./script.js"></script>
 </body>
+
 </html>
