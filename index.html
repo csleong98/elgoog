@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.com/libraries/bulma">
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="./vue-google-maps.js"></script>
     <title>Maps</title>
@@ -15,17 +16,51 @@
 
 <body>
     <div id="root">
-        {{ message }}
+        <div class="container">
 
-        <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
-            <ground-overlay source="./overlay.png" :bounds="{
-                  north: 1.502,
-                  south: 1.185,
-                  east: 104.0262,
-                  west: 103.5998,
-              }" :opacity="0.5">
-            </ground-overlay>
-        </google-map>
+            <!-- start of section: two maps -->
+            <div class="section">
+                <div class="columns">
+                    <div class="column">
+                        <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
+                            <ground-overlay source="./overlay.png" :bounds="{
+                                                      north: 1.502,
+                                                      south: 1.185,
+                                                      east: 104.0262,
+                                                      west: 103.5998,
+                                                  }" :opacity="0.5">
+                            </ground-overlay>
+                        </google-map>
+                    </div>
+                    <div class="column">
+                        <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
+                            <ground-overlay source="./overlay.png" :bounds="{
+                                                          north: 1.502,
+                                                          south: 1.185,
+                                                          east: 104.0262,
+                                                          west: 103.5998,
+                                                      }" :opacity="0.5">
+                            </ground-overlay>
+                        </google-map>
+                    </div>
+                </div>
+            </div>
+            <!-- end of section: two maps -->
+
+            <!-- start of section: call to actions -->
+            <div class="section">
+                <div class="content">
+                    <h1 class="title">Call to actions:</h1>
+                    <ol type="1">
+                        <li>Run!</li>
+                        <li>Run faster!</li>
+                        <li>You need to run faster!</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- end of section: call to actions -->
+
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
