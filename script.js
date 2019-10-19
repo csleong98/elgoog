@@ -103,6 +103,16 @@ var tweetComponent = {
         template: `
     <div class="supply">
       <div class="card">
+        <div v-if="this.count > 0" class="card-header">
+            <p class="card-header-title">
+                
+            </p>
+            <div class="card-header-icon">
+                <span>
+                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i></button>
+                </span>
+            </div>
+        </div>
         <article class="card-content">
         <div class="media">
         <div class="media-left">
@@ -134,9 +144,6 @@ var tweetComponent = {
                     <button class="button is-info" @click="incrementCounter">
                         <i class="fa fa-plus"></i>
                     </button>
-                </div>
-                <div v-if="this.count > 0" class="level-item" style="margin-left: 10px;">
-                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i></button>
                 </div>
             </div>
         </div>
