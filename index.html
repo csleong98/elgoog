@@ -5,61 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.com/libraries/bulma">
     <link rel="stylesheet" href="./style.css">
+    <!-- Javascripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="./vue-google-maps.js"></script>
-    <title>Maps</title>
+    <title>Donate Map</title>
 </head>
 
 <body>
     <div id="root">
-        <div class="container">
-
-            <!-- start of section: two maps -->
-            <div class="section">
-                <div class="columns">
+            
+        <div class="container is-fluid">
+            <div class="columns">
+                <div class="column">
+                    <!-- start of section: call to actions -->
+                    <div class="section">
+                        <div class="content action-panel">
+                                <h2>Location: {{disasterLocation}}</h2>
+                                <h4>Catergory: {{disasterCategory}}</h4>
+                                <!-- <div v-for="supply in supplies" v-bind:key="supply.id">
+                                        <li>{{supply.supply}}</li>
+                                </div> -->
+                                <hr>
+                                <h3>Supplies Needed:</h3>
+                                <tweet-component v-for="supply in supplies" :supply="supply" :key="supply.id"/></tweet-component> 
+                        </div>        
+                    </div>
+                    <!-- end of section: call to actions -->
+                </div>
+                <!-- start of section: two maps -->
                     <div class="column">
                         <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
                             <ground-overlay source="./overlay.png" :bounds="{
-                                                      north: 1.502,
-                                                      south: 1.185,
-                                                      east: 104.0262,
-                                                      west: 103.5998,
-                                                  }" :opacity="0.5">
+                                                    north: 1.502,
+                                                    south: 1.185,
+                                                    east: 104.0262,
+                                                    west: 103.5998,
+                                                }" :opacity="0.5">
                             </ground-overlay>
                         </google-map>
-                    </div>
-                    <div class="column">
+
                         <google-map :center="{lat: 1.38, lng: 103.8}" :zoom="12" style="width: 100%; height: 500px">
                             <ground-overlay source="./overlay.png" :bounds="{
-                                                          north: 1.502,
-                                                          south: 1.185,
-                                                          east: 104.0262,
-                                                          west: 103.5998,
-                                                      }" :opacity="0.5">
+                                                        north: 1.502,
+                                                        south: 1.185,
+                                                        east: 104.0262,
+                                                        west: 103.5998,
+                                                    }" :opacity="0.5">
                             </ground-overlay>
                         </google-map>
                     </div>
-                </div>
+                <!-- end of section: two maps -->
             </div>
-            <!-- end of section: two maps -->
-
-            <!-- start of section: call to actions -->
-            <div class="section">
-                <div class="content">
-                    <h1 class="title">Call to actions:</h1>
-                    <ol type="1">
-                        <li>Run!</li>
-                        <li>Run faster!</li>
-                        <li>You need to run faster!</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- end of section: call to actions -->
-
         </div>
     </div>
     <script src="./script.js"></script>
