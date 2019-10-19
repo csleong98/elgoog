@@ -33,36 +33,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const supplies = [{
             id: 1,
             name: 'Food',
+            amount: 100,
             img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
         },
         {
             id: 2,
             name: 'Water',
+            amount: 100,
             img: 'https://semantic-ui.com/images/avatar2/large/molly.png',
         },
         {
             id: 3,
             name: 'Clothing',
+            amount: 100,
             img: 'https://semantic-ui.com/images/avatar2/large/elyse.png',
         }
     ]
-
-    Vue.component('tweet-component', {
+var tweetComponent = { 
+    
         data: function () {
             return {
                 count: 0,
                 selected: false,
-                selectedCount: ""
+                selectedCount: "",
             }
         },
         methods: {
+            clear: function() {
+                this.supply.amount = ((this.supply.amount) + (this.count));
+                this.count = 0;
+            },
+            decrease50: function() {
+                if(this.supply.amount <= 0) {
+                    alert("Supply is sufficient.");
+                } else {
+                    this.count += 50;
+                    this.supply.amount -= 50;
+                    this.selected = true;
+                }
+            },
             incrementCounter: function () {
-                this.count += 1;
-                this.selected = true;
+                if(this.supply.amount <= 0) {
+                    alert("Supply is sufficient.");
+                } else {
+                    this.count += 1;
+                    this.supply.amount -= 1;
+                    this.selected = true;
+                }
             },
             decrementCounter: function() {
                 if (this.count > 0) {
                     this.count -= 1;
+                    this.supply.amount += 1;
                     this.selected = true;
                 } 
                 else if (this.count = 0) {
@@ -73,7 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             addNumber: function() {
-                this.count = 
+                this.$emit("SelectedCount", this.count);
+                console.log(this.count);
+                this.count = 0;
             }
         },
         template: `
@@ -86,45 +110,80 @@ document.addEventListener('DOMContentLoaded', function () {
               <img :src="supply.img" alt="Image">
             </figure>
           </div>
-          <div class="content">
-            <h4>
-                <strong>{{supply.name}}</strong>
-            </h4>
+            <div class="media-content">
+                <p class="title is-4">
+                    <strong>{{supply.name}}</strong>
+                </p>
+                <p class="subtitle is-6">
+                    {{supply.amount}}
+                </p>
+            </div>
+            <div class="media-left">
+                <button class="button is-outlined" @click="decrease50">Donate 50</button>
+            </div>
             <div class="level">
                 <div class="level-item">
-                    <button class="button is-info" @click="incrementCounter">
-                        <i class="fa fa-plus"></i>
+                    <button class="button is-info" @click="decrementCounter">
+                        <i class="fa fa-minus"></i>
                     </button>
                 </div>
                 <div class="level-item" style="margin: 0 5px 0 5px;">
                     <p>{{count}}</p>
                 </div>
                 <div class="level-item">
-                    <button class="button is-info" @click="decrementCounter">
-                        <i class="fa fa-minus"></i>
+                    <button class="button is-info" @click="incrementCounter">
+                        <i class="fa fa-plus"></i>
                     </button>
                 </div>
+                <div v-if="this.count > 0" class="level-item" style="margin-left: 10px;">
+                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i></button>
+                </div>
             </div>
-          </div>
         </div>
         </article>
-        <footer v-if="selected" class="card-footer">
-            <a href="#" class="card-footer-item" @click="addNumber">Select</a>            
+        <footer v-if="this.count > 0" class="card-footer">
+            <a href="#" class="card-footer-item" @click="addNumber">Confirm<p v-if="count > 0">({{count}})</p></a>            
         </footer>
       </div>
     </div> 
-  `,
-        props: {
-            supply: Object
-        }
-    });
 
+  `,
+    props: {
+        supply: Object
+    }
+}
+
+// var resultComponent = {
+//     components: {
+//         'tweetcomponent': tweetComponent
+//     },
+//     data: function(){
+//         return {
+//             data: ""
+//         }
+//     },
+//     template: `
+//         <p>{{data}}</p>
+//     `,
+//     methods: {
+//         setCountForComponent() {
+//             console.log("it works")
+//         }
+//     },
+// }
     new Vue({
         el: '#root',
-        data: {
-            disasterLocation: "Kuala Lumpur",
-            disasterCategory: "Flood",
-            supplies
-        }
+        components: {
+            'tweetcomponent': tweetComponent,
+            // 'resultcomponent': resultComponent
+        },
+        data: 
+         function() {
+            return {
+                disasterLocation: "Kuala Lumpur",
+                disasterCategory: "Flood",
+                supplies
+            }
+         }
     });
 });

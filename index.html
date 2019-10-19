@@ -32,7 +32,11 @@
                                 </div> -->
                                 <hr>
                                 <h3>Supplies Needed:</h3>
-                                <tweet-component v-for="supply in supplies" :supply="supply" :key="supply.id"/></tweet-component> 
+                                <tweetcomponent v-for="supply in supplies" :supply="supply" :key="supply.id"/></tweetcomponent> 
+                        </div>
+
+                        <div class="content result-panel">
+                            <!-- <resultcomponent @setSelectedCount="setCountForComponent"></resultcomponent> -->
                         </div>
                     </div>
                     <!-- end of section: call to actions -->
