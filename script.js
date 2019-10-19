@@ -48,9 +48,37 @@ document.addEventListener('DOMContentLoaded', function () {
     ]
 
     Vue.component('tweet-component', {
+        data: function () {
+            return {
+                count: 0,
+                selected: false,
+                selectedCount: ""
+            }
+        },
+        methods: {
+            incrementCounter: function () {
+                this.count += 1;
+                this.selected = true;
+            },
+            decrementCounter: function() {
+                if (this.count > 0) {
+                    this.count -= 1;
+                    this.selected = true;
+                } 
+                else if (this.count = 0) {
+                    this.selected= false;
+                }
+                else {
+                    this.count = 0;
+                }
+            },
+            addNumber: function() {
+                this.count = 
+            }
+        },
         template: `
     <div class="supply">
-      <div class="card" @click="select">
+      <div class="card">
         <article class="card-content">
         <div class="media">
         <div class="media-left">
@@ -59,14 +87,29 @@ document.addEventListener('DOMContentLoaded', function () {
             </figure>
           </div>
           <div class="content">
-            <p>
+            <h4>
                 <strong>{{supply.name}}</strong>
-            </p>
+            </h4>
+            <div class="level">
+                <div class="level-item">
+                    <button class="button is-info" @click="incrementCounter">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <div class="level-item" style="margin: 0 5px 0 5px;">
+                    <p>{{count}}</p>
+                </div>
+                <div class="level-item">
+                    <button class="button is-info" @click="decrementCounter">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
           </div>
         </div>
         </article>
-        <footer class="card-footer">
-            <a href="#" class="card-footer-item">Select</a>            
+        <footer v-if="selected" class="card-footer">
+            <a href="#" class="card-footer-item" @click="addNumber">Select</a>            
         </footer>
       </div>
     </div> 
@@ -85,41 +128,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-// supplies: [{
-//         id: 1,
-//         supply: 'Food'
-//     },
-//     {
-//         id: 2,
-//         supply: 'Water'
-//     },
-//     {
-//         id: 3,
-//         supply: 'Medicine'
-//     },
-//     {
-//         id: 4,
-//         supply: 'Children`s` Needs'
-//     },
-//     {
-//         id: 5,
-//         supply: 'Clothing'
-//     },
-// ],
-// services: [{
-//         service: 'medical volunteers'
-//     },
-//     {
-//         service: 'transportation'
-//     },
-//     {
-//         service: 'moving'
-//     },
-//     {
-//         service: 'clearing debris'
-//     },
-//     {
-//         services: 'cleaning'
-//     }
-// ]

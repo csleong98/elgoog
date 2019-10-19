@@ -26,7 +26,7 @@
                     <div class="section">
                         <div class="content action-panel">
                                 <h2>Location: {{disasterLocation}}</h2>
-                                <h4>Catergory: {{disasterCategory}}</h4>
+                                <h4>Category: {{disasterCategory}}</h4>
                                 <!-- <div v-for="supply in supplies" v-bind:key="supply.id">
                                         <li>{{supply.supply}}</li>
                                 </div> -->
@@ -34,9 +34,6 @@
                                 <h3>Supplies Needed:</h3>
                                 <tweet-component v-for="supply in supplies" :supply="supply" :key="supply.id"/></tweet-component> 
                         </div>
-                        <div v-if="select" class="buttons">
-                            <button class="button is-success is-fullwidth">Donate</button>
-                        </div> 
                     </div>
                     <!-- end of section: call to actions -->
                 </div>
