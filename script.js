@@ -145,29 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // var resultComponent = {
-    //     components: {
-    //         'tweetcomponent': tweetComponent
-    //     },
-    //     data: function(){
-    //         return {
-    //             data: ""
-    //         }
-    //     },
-    //     template: `
-    //         <p>{{data}}</p>
-    //     `,
-    //     methods: {
-    //         setCountForComponent() {
-    //             console.log("it works")
-    //         }
-    //     },
-    // }
     const mp = new Vue({
         el: '#root',
         components: {
             'tweetcomponent': tweetComponent,
-            // 'resultcomponent': resultComponent
         },
         data:
             function () {
@@ -184,9 +165,25 @@ document.addEventListener('DOMContentLoaded', function () {
                         lng: 110.5879166668
                     },
                     earthquakeMarkers: [],
-                    populationMarkers: []
+                    populationMarkers: [],
+                    moneys: [
+                        { moneyamount: 20},
+                        { moneyamount: 50 },
+                        { moneyamount: 100 }
+                    ],
                 }
-            }
+            },
+            methods: {
+                donateMoney: function() {
+                    if ("{{money.moneyamount}}" == 20) {
+                        alert("You donated"+ " " + 20);
+                    } else if ("{{money.moneyamount}}" == 50) {
+                        alert("You donated"+ " "+ 50);
+                    } else {
+                        alert("You donated"+ " "+ 100);
+                    }
+                }
+            },
     });
     fetch("./data/earthquake.json").then(function (resp) {
         return resp.json();
