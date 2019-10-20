@@ -4,7 +4,7 @@ Our initial idea: make something help people run for lives faster. We thought of
 
 Down the road, we pivot and change for better, we found there are plenty of 'another natural disaster vizualization app', and in our opinions, that's lack of real actions being take after knowing all the disasters, most likely most people didn't even see the 'app'. We don't want to make another thing to only create awareness - we wanna help people take actions, in a easier way.
 
-In the end, we ended up with a simple Web app, to help people in safe to know our friends at another part of the world are suffering, and help them to actually take action to support them. 
+In the end, we ended up with a simple Web app, to help people in safe to know our friends at another part of the world are suffering, and help them to actually take action to support them. Here's a stimulation of our idea: https://elgoog.netlify.com
 
 One of the coolest things we did was, we picked up a new framework that's totally new to us [VueJS](https://vuejs.org/). We learned it along our way of building stuffs, great experience gained.
 
