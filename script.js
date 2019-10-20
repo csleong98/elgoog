@@ -13,20 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const supplies = [{
         id: 1,
         name: 'Food',
-        amount: 100,
-        img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
+        amount: 300,
+        img: './img/food.png',
     },
     {
         id: 2,
         name: 'Water',
-        amount: 100,
-        img: 'https://semantic-ui.com/images/avatar2/large/molly.png',
+        amount: 300,
+        img: './img/water.png',
     },
     {
         id: 3,
         name: 'Clothing',
-        amount: 100,
-        img: 'https://semantic-ui.com/images/avatar2/large/elyse.png',
+        amount: 300,
+        img: './img/clothes.png',
     }
     ]
     var tweetComponent = {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </p>
             <div class="card-header-icon">
                 <span>
-                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i></button>
+                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i> Clear</button>
                 </span>
             </div>
         </div>
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             function () {
                 return {
                     disasterLocation: "Kuala Lumpur",
-                    disasterCategory: "Flood",
+                    disasterCategory: "Earthquake",
                     supplies,
                     eqCenter: {
                         lat: 30.529,
