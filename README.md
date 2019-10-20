@@ -13,3 +13,5 @@ Along my way researching about the problems we are trying to solve, I found some
 Another project worth mentioning is this, from one of the team at Tensorflow 2.0 Challenge, they use tweets data from Twitter to predict their location and disaster they are in!
 
 And here marks the story of this weekend project ;)
+
+![Screenshot](https://github.com/huaiyukhaw/elgoog/blob/master/img/Capture.PNG)
