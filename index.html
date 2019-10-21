@@ -36,12 +36,18 @@
                                 </div> -->
                             <hr>
                             <h3>Supplies Needed:</h3>
+                            <p>Donate the supplies that the victims needed.</p>
                             <tweetcomponent v-for="supply in supplies" :supply="supply" :key="supply.id" />
                             </tweetcomponent>
                         </div>
 
                         <div class="content result-panel">
-                            <!-- <resultcomponent @setSelectedCount="setCountForComponent"></resultcomponent> -->
+                            <h3>Monetary Donation:</h3>
+                            <div class="columns">
+                                <div v-for="money in moneys" class="column">
+                                    <button class="button is-outlined is-fullwidth" @click="donateMoney">Donate {{money.moneyamount}} MYR</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end of section: call to actions -->

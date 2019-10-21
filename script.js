@@ -1,6 +1,6 @@
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyDiNL2tVY9jcUFPUGZZBheuRQvKqxlHBxI',
+        key: '<APIkey>',
         v: '3.26',
     },
     installComponents: false,
@@ -14,18 +14,21 @@ document.addEventListener('DOMContentLoaded', function () {
         id: 1,
         name: 'Food',
         amount: 300,
+        amountCategory: 'packages',
         img: './img/food.png',
     },
     {
         id: 2,
         name: 'Water',
         amount: 300,
+        amountCategory: 'bottles',
         img: './img/water.png',
     },
     {
         id: 3,
         name: 'Clothing',
         amount: 300,
+        amountCategory: 'sets',
         img: './img/clothes.png',
     }
     ]
@@ -77,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
             addNumber: function () {
                 this.$emit("SelectedCount", this.count);
                 console.log(this.count);
+                alert(this.count + ' ' + this.supply.amountCategory + ' ' + "of" + ' ' + this.supply.name + ' ' + "has been donated");
                 this.count = 0;
             }
         },
@@ -89,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </p>
             <div class="card-header-icon">
                 <span>
-                    <button class="button is-danger is-outlined" @click="clear"><i class="fas fa-times"></i> Clear</button>
+                    <button class="button is-danger is-outlined" @click="clear">Clear</button>
                 </span>
             </div>
         </div>
@@ -104,12 +108,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p class="title is-4">
                     <strong>{{supply.name}}</strong>
                 </p>
-                <p class="subtitle is-6">
+                <span class="subtitle is-6">
                     {{supply.amount}}
-                </p>
+                </span>
+                <span>{{supply.amountCategory}}</span>
             </div>
             <div class="media-left">
-                <button class="button is-outlined" @click="decrease50">Donate 50</button>
+                <button class="button is-outlined" @click="decrease50">Donate 50 {{this.supply.amountCategory}} </button>
             </div>
             <div class="level">
                 <div class="level-item">
@@ -140,29 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // var resultComponent = {
-    //     components: {
-    //         'tweetcomponent': tweetComponent
-    //     },
-    //     data: function(){
-    //         return {
-    //             data: ""
-    //         }
-    //     },
-    //     template: `
-    //         <p>{{data}}</p>
-    //     `,
-    //     methods: {
-    //         setCountForComponent() {
-    //             console.log("it works")
-    //         }
-    //     },
-    // }
     const mp = new Vue({
         el: '#root',
         components: {
             'tweetcomponent': tweetComponent,
-            // 'resultcomponent': resultComponent
         },
         data:
             function () {
@@ -179,9 +165,25 @@ document.addEventListener('DOMContentLoaded', function () {
                         lng: 110.5879166668
                     },
                     earthquakeMarkers: [],
-                    populationMarkers: []
+                    populationMarkers: [],
+                    moneys: [
+                        { moneyamount: 20},
+                        { moneyamount: 50 },
+                        { moneyamount: 100 }
+                    ],
                 }
-            }
+            },
+            methods: {
+                donateMoney: function() {
+                    if ("{{money.moneyamount}}" == 20) {
+                        alert("You donated"+ " " + 20);
+                    } else if ("{{money.moneyamount}}" == 50) {
+                        alert("You donated"+ " "+ 50);
+                    } else {
+                        alert("You donated"+ " "+ 100);
+                    }
+                }
+            },
     });
     fetch("./data/earthquake.json").then(function (resp) {
         return resp.json();
