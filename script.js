@@ -1,6 +1,6 @@
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyCVm6ToMMRm57RAEwmWl73-DNDDgnCZ9Y0',
+        key: config.APIkey,
         v: '3.26',
     },
     installComponents: false,
